@@ -1,0 +1,9 @@
+<h2>List de rando</h2>
+<div>   
+    Filter par : <input type="text" [(ngModel)] = "searchTerm" placeholder="mots clés..." >
+</div>
+<div *ngFor="let hike of hikes | hikeFilter:searchTerm"><!-- on applique le filter sur le tableau hikes .hikeFilter filter  ,searchTerm parametre ,  [(ngModel)] = "searchTerm"-->
+    
+    <hike-summary [h]="hike" (addHikeAsFavorite)="addToMyTodoHike($event)"></hike-summary>
+</div>
+

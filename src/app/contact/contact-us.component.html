@@ -1,0 +1,42 @@
+<h2>Contactez-nous</h2>
+
+<form #form="ngForm" (submit)="sendMessage(form)"novalidate><!-- ngForm cré un objet de tout le formulaire contenu dans #form qui est une variable de template-->
+    <div class="form-group" [class.has-error]="msgSubject.invalid && msgSubject.touched"><!--class.has-error intégration de class bootstrap -->
+        <label for="subject" class="control-label">Sujet</label>
+        <input type="text"   
+        name="sujet" 
+        required 
+        class="form-control" 
+        placeholder="sujet" 
+        #msgSubject="ngModel" 
+        ngModel
+        id="subject" >
+    <div *ngIf="msgSubject.invalid && msgSubject.touched">Sujet manquant</div><!-- pas obligé vu que en haut class.has-error -->
+    <!-- si l utilisateur na pas écrit et a effacé puis perdu le focus s affiche-->
+    </div>
+    <div class="form-group"
+           [class.has-error]="msgContent.invalid && msgContent.touched"
+>
+        <label for="message">Sujet</label>
+        <textarea type="text" 
+         ngModel 
+         #msgContent = "ngModel"
+         name="message" 
+         class="form-control" 
+         required 
+         placeholder="message"
+          id="message" >
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label for="service" class="control-label">Sujet</label>
+        <select name="service" ngModel class="form-control" id="service" >
+            <option value="tech">technique</option>
+            <option value="sales">Commercial</option>
+            <option value="guide">guide moyenne montagne</option>
+        </select>
+    </div>
+    <button type="submit"  [disabled]="form.invalid" class="btn btn-primary">envoyer</button>
+ 
+</form>
+  Form :  {{form.valid | json}}
